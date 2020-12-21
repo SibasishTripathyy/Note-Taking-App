@@ -1,7 +1,7 @@
 const textInp = document.getElementById("floatingTextarea");
 const addButton = document.getElementById("addButton");
 const tBody = document.getElementById("tBody");
-var colCtr = 2;
+var colCtr = false;
 
 class addItem {
 	constructor(inputText) {
@@ -33,14 +33,18 @@ class addItem {
 		link.classList.add("btn", "btn-primary");
 		link.innerHTML = "Go Somewhere";
 
-		tBody.appendChild(tr);
-		tr.appendChild(td);
+		if (colCtr == false) {
+			tBody.appendChild(tr);
+		}
+
+		colCtr = !colCtr;
+
+		tBody.lastChild.appendChild(td);
 		td.appendChild(itemOuterDiv);
 		td.appendChild(itemInnerDiv);
 		td.appendChild(hText);
 		td.appendChild(para);
 		td.appendChild(link);
-
 
 	}
 }
