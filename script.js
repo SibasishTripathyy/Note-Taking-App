@@ -1,12 +1,13 @@
-const titleInp = document.getElementById("basic-addon1");
+const titleInp = document.getElementById("titleInp");
 const textInp = document.getElementById("floatingTextarea");
 const addButton = document.getElementById("addButton");
 const tBody = document.getElementById("tBody");
 var colCtr = false;
+var newModal = 0;
 
 class addItem {
-	constructor(inputText, textInp) {
-		this.createNewInput(inputText, textInp);
+	constructor(inputText, titleInp) {
+		this.createNewInput(inputText, titleInp);
 	}
 
 	createNewInput(inputText, titleInp) {
@@ -17,32 +18,34 @@ class addItem {
 
 		var itemOuterDiv = document.createElement("div");
 		itemOuterDiv.classList.add("card");
-		itemOuterDiv.style.width = "100%";
 
 		var itemInnerDiv = document.createElement("div");
 		itemInnerDiv.classList.add("card-body");
 
 		var hText = document.createElement("h5");
 		hText.classList.add("card-title");
-		hText.innerHTML = textInp;
+		hText.innerHTML = titleInp;
 
 		var para = document.createElement("p");
 		para.classList.add("card-text");
-		para.innerHTML = titleInp;
+		para.innerHTML = inputText;
 
 		var link = document.createElement("a");
 		link.classList.add("btn", "btn-primary");
 		link.innerHTML = "View Detailed Info";
 		link.setAttribute("data-toggle", "modal");
-		link.setAttribute("href", "#exampleModal");
+		newModal = newModal + 1;
+		let attrId = "viewModal" + newModal;
+		let attr = "#" + attrId;
+		link.setAttribute("href", attr);
 
 		//Modal
 		var modalDiv1 = document.createElement("div");
-		modalDiv1.classList.add("modal fade");
-		modalDiv1.setAttribute("id", "exampleModal");
+		modalDiv1.classList.add("modal", "fade");
+		modalDiv1.setAttribute("id", attrId);
 		modalDiv1.setAttribute("tabindex", "-1");
 		modalDiv1.setAttribute("role", "dialog");
-		modalDiv1.setAttribute("aria-labelledby", "exampleModalLabel");
+		modalDiv1.setAttribute("aria-labelledby", attrId);
 		modalDiv1.setAttribute("aria-hidden", "true");
 
 		var modalDiv2 = document.createElement("div");
@@ -74,11 +77,31 @@ class addItem {
 
 		tBody.lastChild.appendChild(td);
 		td.appendChild(itemOuterDiv);
-		td.appendChild(itemInnerDiv);
+		itemOuterDiv.appendChild(itemInnerDiv);
+
 		//append modal here
-		td.appendChild(hText);
-		td.appendChild(para);
-		td.appendChild(link);
+
+
+
+		// append wrapper here
+		function appendModalChildren(parent, children) {
+			children.forEach(function (child) {
+				parent.appendChild(child);
+			});
+		}
+
+		itemInnerDiv.appendChild(hText);
+		itemInnerDiv.appendChild(para);
+		itemInnerDiv.appendChild(link);
+
+		//modal
+		itemInnerDiv.appendChild(modalDiv1);
+		modalDiv1.appendChild(modalDiv2);
+		modalDiv2.appendChild(modalDiv3);
+		modalDiv3.appendChild(modalDiv4);
+		modalDiv4.appendChild(modalTitle);
+		modalDiv3.appendChild(modalDiv5);
+		modalDiv5.appendChild(modalBody)
 
 	}
 }
