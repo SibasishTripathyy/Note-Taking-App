@@ -4,6 +4,7 @@ const addButton = document.getElementById("addButton");
 const tBody = document.getElementById("tBody");
 var colCtr = false;
 var newModal = 0;
+var tdCtr = 0;
 
 class addItem {
 	constructor(inputText, titleInp) {
@@ -14,7 +15,10 @@ class addItem {
 
 		var tr = document.createElement("tr");
 
+		tdCtr = tdCtr + 1;
+		let tdId = "td" + tdCtr;
 		var td = document.createElement("td");
+		td.setAttribute("id", tdId);
 
 		var itemOuterDiv = document.createElement("div");
 		itemOuterDiv.classList.add("card");
@@ -23,8 +27,17 @@ class addItem {
 		itemInnerDiv.classList.add("card-body");
 
 		var hText = document.createElement("h5");
-		hText.classList.add("card-title");
+		hText.classList.add("card-title", "d-flex", "justify-content-between", "align-items-center");
 		hText.innerHTML = titleInp;
+
+		//Delete card button
+		var closeBtn = document.createElement("button");
+		closeBtn.setAttribute("id", "closeBtn");
+		closeBtn.setAttribute("aria-label", "Close");
+		closeBtn.setAttribute("button", "button");
+		closeBtn.classList.add("btn-close");
+		closeBtn.style.width = "0.2rem";
+		closeBtn.style.height = "0.2rem";
 
 		var para = document.createElement("p");
 		para.classList.add("card-text");
@@ -75,11 +88,19 @@ class addItem {
 
 		colCtr = !colCtr;
 
+		closeBtn.onclick = () => {
+			if (confirm("Are you sure you want to delete this note?")) {
+				document.getElementById(tdId).remove();
+				colCtr = !colCtr;
+			}
+		}
+
 		tBody.lastChild.appendChild(td);
 		td.appendChild(itemOuterDiv);
 		itemOuterDiv.appendChild(itemInnerDiv);
 
 		itemInnerDiv.appendChild(hText);
+		hText.appendChild(closeBtn);
 		itemInnerDiv.appendChild(para);
 		itemInnerDiv.appendChild(link);
 
