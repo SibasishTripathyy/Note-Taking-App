@@ -79,17 +79,6 @@ class addItem {
 		td.appendChild(itemOuterDiv);
 		itemOuterDiv.appendChild(itemInnerDiv);
 
-		//append modal here
-
-
-
-		// append wrapper here
-		function appendModalChildren(parent, children) {
-			children.forEach(function (child) {
-				parent.appendChild(child);
-			});
-		}
-
 		itemInnerDiv.appendChild(hText);
 		itemInnerDiv.appendChild(para);
 		itemInnerDiv.appendChild(link);
