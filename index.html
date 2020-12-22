@@ -11,24 +11,27 @@
 	<h3 class="text-center">Add A New Note</h3>
 
 	<div class="container text-center">
+		<div class="input-group mb-3">
+  			<div class="input-group-prepend">
+	    		<span class="input-group-text" id="basic-addon1">Title</span>
+  			</div>
+	  		<input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+		</div>
+
 		<div class="form-floating">
 	  	<textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
 	  	<label for="floatingTextarea">Start Writing Here...</label>
 
+	  	<!-- <div class="input-group">
+	  		<div class="input-group-prepend">
+		    	<span class="input-group-text">Note</span>
+			</div>
+			<textarea class="form-control" aria-label="With textarea"></textarea>
+		</div> -->
+
 	  	<button type="button" class="btn btn-outline-success m-3" id="addButton">Submit</button>
 		</div>
 	</div>
-
-	<!-- <div class="container">
-		<div class="row">
-			<div class="col-6">
-				1
-			</div>
-			<div class="col-6">
-				2
-			</div>
-		</div>
-	</div> -->
 
 	<div class="container">
 		<table class="table">
@@ -39,7 +42,22 @@
 							<div class="card-body">
 								<h5 class="card-title">Card title</h5>
 								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-								<a href="#" class="btn btn-primary">Go somewhere</a>
+								<a data-toggle="modal" href="#exampleModal" class="btn btn-primary">Go somewhere</a>
+
+								<!-- Modal -->
+								<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+								    	<div class="modal-content">
+								    		<div class="modal-header">
+								        		<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+								        		
+								      		</div>
+								      		<div class="modal-body">
+								        	...
+								      		</div>
+								    	</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</td>
@@ -57,7 +75,9 @@
 		</table>
 	</div>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="script.js"></script>
 
 </body>
